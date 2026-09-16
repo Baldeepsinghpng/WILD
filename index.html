@@ -1,0 +1,562 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nature - Find Your Wild</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: white;
+            background: #071b12;
+            overflow-x: hidden;
+        }
+
+        /* ================= BACKGROUND ================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(3, 20, 12, 0.45), rgba(3, 20, 12, 0.8)),
+                radial-gradient(circle at 20% 20%, #246b45, transparent 35%),
+                radial-gradient(circle at 80% 70%, #123d2a, transparent 40%),
+                #071b12;
+        }
+
+        /* Glowing circles */
+
+        .glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: moveGlow 12s infinite alternate ease-in-out;
+        }
+
+        .glow1 {
+            background: #36b56b;
+            top: 5%;
+            left: 5%;
+        }
+
+        .glow2 {
+            background: #78d64b;
+            bottom: 5%;
+            right: 5%;
+            animation-delay: 3s;
+        }
+
+        @keyframes moveGlow {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(150px, 100px);
+            }
+        }
+
+        /* ================= FLOATING LEAVES ================= */
+
+        .leaf {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.5;
+            animation: floatLeaf linear infinite;
+        }
+
+        .leaf:nth-child(1) {
+            left: 10%;
+            animation-duration: 12s;
+            animation-delay: 1s;
+        }
+
+        .leaf:nth-child(2) {
+            left: 30%;
+            animation-duration: 16s;
+            animation-delay: 4s;
+        }
+
+        .leaf:nth-child(3) {
+            left: 55%;
+            animation-duration: 13s;
+            animation-delay: 2s;
+        }
+
+        .leaf:nth-child(4) {
+            left: 75%;
+            animation-duration: 18s;
+            animation-delay: 5s;
+        }
+
+        .leaf:nth-child(5) {
+            left: 90%;
+            animation-duration: 14s;
+            animation-delay: 7s;
+        }
+
+        @keyframes floatLeaf {
+            0% {
+                top: -10%;
+                transform: rotate(0deg) translateX(0);
+            }
+
+            50% {
+                transform: rotate(180deg) translateX(100px);
+            }
+
+            100% {
+                top: 110%;
+                transform: rotate(360deg) translateX(-100px);
+            }
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 25px;
+
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #9cffb6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #9cffb6;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 100px);
+            line-height: 1;
+            margin-bottom: 25px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #9cffb6,
+                #d7ffd9
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            font-size: 20px;
+            line-height: 1.7;
+            color: #d2e8da;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #8ee99f;
+            color: #062012;
+        }
+
+        .secondary {
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            min-height: 70vh;
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 50px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            padding: 35px;
+
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 25px;
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.13);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .card p {
+            color: #c8ddd0;
+            line-height: 1.6;
+        }
+
+        /* ================= QUOTE ================= */
+
+        .quote {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .quote p {
+            font-size: 35px;
+            line-height: 1.4;
+            font-style: italic;
+            color: #dfffe6;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,0,0,0.25);
+            color: #aac5b2;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .quote p {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated background -->
+
+    <div class="background">
+
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌿</div>
+        <div class="leaf">🍂</div>
+        <div class="leaf">🍃</div>
+        <div class="leaf">🌱</div>
+
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            🌿 WILD
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#explore">Explore</a></li>
+            <li><a href="#discover">Discover</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <h1>Find Your Wild.</h1>
+
+        <p>
+            Step away from the noise and reconnect with the world
+            around you. Explore forests, mountains, rivers and
+            everything beautiful that nature has to offer.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#explore" class="btn primary">
+                Explore Nature
+            </a>
+
+            <a href="#discover" class="btn secondary">
+                Discover More
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPLORE -->
+
+    <section id="explore">
+
+        <h2 class="section-title">
+            Explore The Wild 🌎
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">🏔️</div>
+
+                <h3>
+    <a href="mountains.html">Mountains</a></h3>
+
+                <p>
+                    Discover peaceful peaks, fresh air and
+                    breathtaking landscapes far above the noise.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🌲</div>
+
+                <h3>
+    <a href="forests.html">Forests</a></h3>
+
+                <p>
+                    Walk beneath ancient trees and experience
+                    the calm rhythm of the natural world.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🌊</div>
+
+                <h3>
+    <a href="oceans.html">Oceans</a></h3>
+
+                <p>
+                    Experience the endless blue and discover
+                    the life hidden beneath the waves.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🌅</div>
+
+                <h3>Sunsets</h3>
+
+                <p>
+                    Slow down, look around and enjoy one of
+                    nature's simplest masterpieces.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DISCOVER -->
+
+    <section id="discover">
+
+        <div class="quote">
+
+            <p>
+                "Look deep into nature, and then you will
+                understand everything better."
+            </p>
+
+            <br>
+
+            <span>— Albert Einstein</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            Why Nature?
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🧘</div>
+                <h3>Peace</h3>
+                <p>
+                    Nature gives us a place to slow down,
+                    breathe and clear our minds.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌱</div>
+                <h3>Growth</h3>
+                <p>
+                    Every forest begins with a small seed.
+                    Great things take time to grow.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">✨</div>
+                <h3>Inspiration</h3>
+                <p>
+                    From tiny flowers to massive mountains,
+                    nature is full of ideas waiting to be discovered.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            🌿 Protect nature. Explore responsibly. Leave nothing behind.
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Wild Nature
+        </p>
+
+    </footer>
+<a href="explore.html">
+</body>
+</html>
+```

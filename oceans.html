@@ -1,0 +1,343 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Ocean Explorer 🌊</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eaf9ff;
+            color: #073b4c;
+        }
+
+        /* Navigation */
+
+        nav {
+            background: #023e8a;
+            color: white;
+            padding: 15px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        nav a:hover {
+            color: #90e0ef;
+        }
+
+
+        /* Big ocean background */
+
+        .hero {
+
+            height: 500px;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 40, 80, 0.4),
+                    rgba(0, 40, 80, 0.6)
+                ),
+                url("https://images.unsplash.com/photo-1469474968028-56623f02e42e");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+        }
+
+
+        .hero h1 {
+            font-size: 55px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+
+        /* Button */
+
+        .button {
+            display: inline-block;
+
+            background: #00b4d8;
+            color: white;
+
+            padding: 15px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            margin-top: 15px;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background: #0077b6;
+        }
+
+
+        /* Cards */
+
+        .content {
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+
+            width: 250px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .emoji {
+            font-size: 60px;
+        }
+
+
+        /* Facts */
+
+        .facts {
+            background: #0077b6;
+            color: white;
+
+            text-align: center;
+
+            padding: 60px 10%;
+        }
+
+        .fact-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .fact {
+            background: rgba(255,255,255,0.15);
+
+            padding: 20px;
+
+            width: 220px;
+
+            border-radius: 20px;
+        }
+
+        .fact h1 {
+            font-size: 45px;
+        }
+
+
+        /* Footer */
+
+        footer {
+            background: #023e8a;
+            color: white;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <h2>🌊 Ocean Explorer</h2>
+
+        <div>
+
+            <a href="index.html">🏠 Home</a>
+            <a href="nature.html">🌿 Nature</a>
+            <a href="space.html">🚀 Space</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div>
+
+            <h1>🌊 Dive Into The Ocean</h1>
+
+            <p>
+                Explore the mysterious world beneath the waves.
+                Discover incredible animals, beautiful coral reefs
+                and amazing ocean facts.
+            </p>
+
+            <a class="button" href="#facts">
+                Explore ↓
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANIMALS -->
+
+    <section class="content">
+
+        <h2>🐋 Meet The Ocean Giants</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="emoji">🐳</div>
+
+                <h3>Blue Whale</h3>
+
+                <p>
+                    The largest known animal on Earth.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="emoji">🦈</div>
+
+                <h3>Great White Shark</h3>
+
+                <p>
+                    One of the ocean's most famous predators.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="emoji">🐢</div>
+
+                <h3>Sea Turtle</h3>
+
+                <p>
+                    Amazing travelers of the world's oceans.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FACTS -->
+
+    <section class="facts" id="facts">
+
+        <h2>🌎 Amazing Ocean Facts</h2>
+
+        <div class="fact-container">
+
+            <div class="fact">
+
+                <h1>71%</h1>
+
+                <p>
+                    of Earth's surface is covered by ocean.
+                </p>
+
+            </div>
+
+
+            <div class="fact">
+
+                <h1>5</h1>
+
+                <p>
+                    major oceans make up our global ocean.
+                </p>
+
+            </div>
+
+
+            <div class="fact">
+
+                <h1>🐠</h1>
+
+                <p>
+                    Millions of marine organisms live in the ocean.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>🌊 Ocean Explorer</p>
+
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="nature.html">Nature</a> |
+            <a href="space.html">Space</a>
+        </p>
+
+        <p>Made while learning HTML & CSS 🚀</p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```
