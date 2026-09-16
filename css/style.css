@@ -1,4 +1,6 @@
-/* WILD main stylesheet */
+/* =========================
+   WILD - MAIN STYLES
+========================= */
 
 * {
     margin: 0;
@@ -6,6 +8,499 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #071b14;
+    color: white;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(7, 27, 20, 0.9);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #d8e8df;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #72d69a;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-actions button {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: white;
+    padding: 9px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 650px;
+    padding: 100px 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+
+    background:
+        radial-gradient(circle at 80% 30%, rgba(45, 150, 91, 0.25), transparent 35%),
+        linear-gradient(135deg, #071b14, #0b3021);
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.small-title {
+    color: #70d898;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #6bd694;
+}
+
+.hero-text {
+    color: #b8ccc2;
+    font-size: 18px;
+    max-width: 550px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.primary {
+    background: #69d592;
+    color: #062016;
+}
+
+.primary:hover {
+    background: #82e6a7;
+}
+
+.secondary {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    background: rgba(255,255,255,0.05);
+}
+
+
+/* =========================
+   HERO PLANT CARD
+========================= */
+
+.hero-card {
+    width: 330px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 25px;
+    overflow: hidden;
+
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+
+.plant-image {
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 120px;
+
+    background:
+        radial-gradient(circle, #326d4d, #0c3020);
+}
+
+.plant-info {
+    padding: 25px;
+}
+
+.plant-info p {
+    color: #70d898;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.plant-info h3 {
+    font-size: 27px;
+    margin: 5px 0;
+}
+
+.plant-info span {
+    color: #a8bdb3;
+    font-size: 14px;
+}
+
+.plant-info strong {
+    display: block;
+    margin-top: 15px;
+    font-size: 22px;
+}
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+section {
+    padding: 100px 7%;
+}
+
+.section-heading {
+    max-width: 650px;
+    margin-bottom: 50px;
+}
+
+.section-heading h2 {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #aebfb7;
+}
+
+
+/* =========================
+   PLANT FINDER
+========================= */
+
+.finder {
+    background: #0b241a;
+}
+
+.finder-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.finder-option {
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.finder-option:hover {
+    transform: translateY(-7px);
+    background: rgba(255,255,255,0.09);
+}
+
+.finder-option span {
+    font-size: 35px;
+}
+
+.finder-option h3 {
+    margin: 15px 0 5px;
+}
+
+.finder-option p {
+    color: #9fb3a9;
+    font-size: 14px;
+}
+
+
+/* =========================
+   FEATURED PLANTS
+========================= */
+
+.featured {
+    background: #071b14;
+}
+
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.plant-card {
+    background: #102d20;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.plant-card:hover {
+    transform: translateY(-8px);
+}
+
+.plant-placeholder {
+    height: 250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 90px;
+
+    background:
+        radial-gradient(circle, #315f46, #102d20);
+}
+
+.plant-card-content {
+    padding: 25px;
+}
+
+.plant-card-content > span {
+    color: #6bd694;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.plant-card-content h3 {
+    font-size: 24px;
+    margin: 8px 0;
+}
+
+.plant-card-content p {
+    color: #a8bbb1;
+    font-size: 14px;
+}
+
+.plant-bottom {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plant-bottom strong {
+    font-size: 20px;
+}
+
+.plant-bottom button {
+    background: #69d592;
+    color: #062016;
+    border: none;
+    padding: 9px 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* =========================
+   NURSERIES
+========================= */
+
+.nurseries {
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(rgba(5,25,17,0.85), rgba(5,25,17,0.9)),
+        radial-gradient(circle at 70% 40%, #2b6948, transparent 45%),
+        #0a2419;
+}
+
+.nursery-content {
+    max-width: 650px;
+}
+
+.nursery-content h2 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.nursery-content h2 span {
+    color: #6bd694;
+}
+
+.nursery-content > p:not(.small-title) {
+    color: #b3c5bc;
+    margin-bottom: 30px;
+    font-size: 17px;
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how {
+    background: #0b241a;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.step {
+    padding: 30px;
+    border-left: 2px solid #69d592;
+}
+
+.step > div {
+    color: #69d592;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.step h3 {
+    margin: 15px 0 8px;
+    font-size: 22px;
+}
+
+.step p {
+    color: #a8bbb1;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 60px 7%;
+    background: #04120d;
+    text-align: center;
+}
+
+footer .logo {
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #91a79d;
+    margin-bottom: 20px;
+}
+
+footer small {
+    color: #60756b;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .finder-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .hero {
+        padding-top: 70px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .finder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
 }
