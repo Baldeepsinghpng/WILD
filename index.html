@@ -15,335 +15,566 @@
     <!-- NAVBAR -->
     <nav class="navbar">
 
-        <div class="logo">
-            🌿 WILD
-        </div>
+        <a href="index.html" class="logo">🌿 WILD</a>
 
         <div class="nav-links">
-            <a href="index.html">Home</a>
             <a href="#plants">Plants</a>
+            <a href="#finder">Plant Finder</a>
             <a href="#nurseries">Nurseries</a>
-            <a href="#how-it-works">How It Works</a>
+            <a href="#how">How It Works</a>
         </div>
 
-        <div class="nav-actions">
-            <button>♡</button>
-            <button>🛒</button>
+        <div class="nav-right">
+            <button class="icon-btn">♡</button>
+            <button class="icon-btn">🛒</button>
         </div>
 
     </nav>
 
 
     <!-- HERO -->
-    <section class="hero">
+    <main>
 
-        <div class="hero-content">
+        <section class="hero">
 
-            <p class="small-title">THE SMART WAY TO GO GREEN</p>
+            <div class="hero-content">
 
-            <h1>
-                Find the right plant
-                <span>for your space.</span>
-            </h1>
+                <div class="badge">
+                    🌱 Your space. Your plant.
+                </div>
 
-            <p class="hero-text">
-                Discover plants from local nurseries based on your
-                space, sunlight, budget and experience.
-            </p>
+                <h1>
+                    Bring a little
+                    <span>WILD</span>
+                    home.
+                </h1>
 
-            <div class="hero-buttons">
+                <p>
+                    Discover plants that actually fit your space,
+                    sunlight, lifestyle and budget — from local
+                    nurseries around you.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#finder" class="btn primary">
+                        Find My Plant →
+                    </a>
+
+                    <a href="#plants" class="btn outline">
+                        Explore Plants
+                    </a>
+
+                </div>
+
+                <div class="trust">
+
+                    <div>
+                        <strong>100+</strong>
+                        <span>Plant varieties</span>
+                    </div>
+
+                    <div>
+                        <strong>Local</strong>
+                        <span>Nursery network</span>
+                    </div>
+
+                    <div>
+                        <strong>Smart</strong>
+                        <span>Recommendations</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="glow"></div>
+
+                <div class="plant-showcase">
+
+                    <div class="plant-art">
+                        🌿
+                    </div>
+
+                    <div class="floating-card card-top">
+                        ☀️
+                        <div>
+                            <small>LIGHT</small>
+                            <strong>Low Light</strong>
+                        </div>
+                    </div>
+
+                    <div class="floating-card card-bottom">
+                        💧
+                        <div>
+                            <small>CARE</small>
+                            <strong>Easy</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    placeholder="Search plants, nurseries or plant types..."
+                >
+
+                <button>Search</button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PLANT FINDER -->
+        <section class="finder" id="finder">
+
+            <div class="section-header">
+
+                <div>
+                    <p class="eyebrow">SMART PLANT FINDER</p>
+
+                    <h2>
+                        Not sure what plant
+                        <span>fits you?</span>
+                    </h2>
+                </div>
+
+                <p>
+                    Tell us about your space. WILD will eventually
+                    use these choices to recommend suitable plants.
+                </p>
+
+            </div>
+
+
+            <div class="finder-grid">
+
+                <div class="finder-card">
+
+                    <div class="finder-icon">☀️</div>
+
+                    <h3>How much sunlight?</h3>
+
+                    <p>Choose your typical light.</p>
+
+                    <div class="choices">
+                        <button>Low</button>
+                        <button>Medium</button>
+                        <button>Bright</button>
+                    </div>
+
+                </div>
+
+
+                <div class="finder-card">
+
+                    <div class="finder-icon">🏠</div>
+
+                    <h3>Where will it live?</h3>
+
+                    <p>Tell us about your space.</p>
+
+                    <div class="choices">
+                        <button>Room</button>
+                        <button>Balcony</button>
+                        <button>Garden</button>
+                    </div>
+
+                </div>
+
+
+                <div class="finder-card">
+
+                    <div class="finder-icon">💰</div>
+
+                    <h3>What's your budget?</h3>
+
+                    <p>Find plants within your range.</p>
+
+                    <div class="choices">
+                        <button>₹200</button>
+                        <button>₹500</button>
+                        <button>₹1000+</button>
+                    </div>
+
+                </div>
+
+
+                <div class="finder-card">
+
+                    <div class="finder-icon">🌱</div>
+
+                    <h3>How experienced are you?</h3>
+
+                    <p>We'll keep care difficulty in mind.</p>
+
+                    <div class="choices">
+                        <button>Beginner</button>
+                        <button>Some</button>
+                        <button>Expert</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PLANTS -->
+        <section class="plants" id="plants">
+
+            <div class="section-header">
+
+                <div>
+                    <p class="eyebrow">EXPLORE</p>
+
+                    <h2>
+                        Plants people
+                        <span>love.</span>
+                    </h2>
+                </div>
+
+                <a href="#" class="view-all">
+                    View all plants →
+                </a>
+
+            </div>
+
+
+            <div class="plant-grid">
+
+
+                <!-- PLANT 1 -->
+
+                <article class="plant-card">
+
+                    <div class="plant-photo snake">
+                        🌿
+
+                        <button class="heart">♡</button>
+
+                        <span class="tag">BEGINNER</span>
+                    </div>
+
+                    <div class="plant-info">
+
+                        <p class="category">INDOOR PLANT</p>
+
+                        <h3>Snake Plant</h3>
+
+                        <p class="description">
+                            Tough, low-maintenance and great
+                            for beginners.
+                        </p>
+
+                        <div class="plant-meta">
+                            <span>☀️ Low light</span>
+                            <span>💧 Low water</span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <strong>₹299</strong>
+
+                            <button class="add-btn">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PLANT 2 -->
+
+                <article class="plant-card">
+
+                    <div class="plant-photo money">
+                        🪴
+
+                        <button class="heart">♡</button>
+
+                        <span class="tag">POPULAR</span>
+                    </div>
+
+                    <div class="plant-info">
+
+                        <p class="category">INDOOR PLANT</p>
+
+                        <h3>Money Plant</h3>
+
+                        <p class="description">
+                            An easy-going classic for homes
+                            and workspaces.
+                        </p>
+
+                        <div class="plant-meta">
+                            <span>☀️ Medium light</span>
+                            <span>💧 Medium water</span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <strong>₹249</strong>
+
+                            <button class="add-btn">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PLANT 3 -->
+
+                <article class="plant-card">
+
+                    <div class="plant-photo cactus">
+                        🌵
+
+                        <button class="heart">♡</button>
+
+                        <span class="tag">EASY CARE</span>
+                    </div>
+
+                    <div class="plant-info">
+
+                        <p class="category">DESERT PLANT</p>
+
+                        <h3>Cactus</h3>
+
+                        <p class="description">
+                            Loves sunlight and needs very
+                            little watering.
+                        </p>
+
+                        <div class="plant-meta">
+                            <span>☀️ Bright light</span>
+                            <span>💧 Very low water</span>
+                        </div>
+
+                        <div class="price-row">
+
+                            <strong>₹149</strong>
+
+                            <button class="add-btn">
+                                Add +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- NURSERIES -->
+        <section class="nurseries" id="nurseries">
+
+            <div class="nursery-text">
+
+                <p class="eyebrow">LOCAL DISCOVERY</p>
+
+                <h2>
+                    Your next plant
+                    could be <span>nearby.</span>
+                </h2>
+
+                <p>
+                    WILD is designed to connect plant lovers
+                    with local nurseries, helping you discover
+                    plants, compare prices and eventually see
+                    what's available nearby.
+                </p>
+
+                <a href="#" class="btn primary">
+                    Discover Nurseries →
+                </a>
+
+            </div>
+
+
+            <div class="nursery-box">
+
+                <div class="map-dots">
+                    <span>🌱</span>
+                    <span>📍</span>
+                    <span>🌿</span>
+                    <span>📍</span>
+                </div>
+
+                <div class="location-card">
+
+                    <span>📍</span>
+
+                    <div>
+                        <strong>Nearby nurseries</strong>
+                        <small>Coming to WILD</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="how" id="how">
+
+            <div class="section-header center">
+
+                <p class="eyebrow">HOW WILD WORKS</p>
+
+                <h2>
+                    From "I want a plant"
+                    to <span>"this one."</span>
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="number">01</div>
+
+                    <h3>Tell us about your space</h3>
+
+                    <p>
+                        Sunlight, location, budget and
+                        experience.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="number">02</div>
+
+                    <h3>Get matched with plants</h3>
+
+                    <p>
+                        WILD finds plants that fit your
+                        requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="number">03</div>
+
+                    <h3>Discover where to buy</h3>
+
+                    <p>
+                        Find suitable plants from
+                        participating nurseries.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta">
+
+            <div>
+
+                <p class="eyebrow">START YOUR COLLECTION</p>
+
+                <h2>
+                    There's a little
+                    <span>WILD</span> for everyone.
+                </h2>
+
+                <p>
+                    Explore plants, discover your space
+                    and grow something.
+                </p>
 
                 <a href="#plants" class="btn primary">
-                    Explore Plants
-                </a>
-
-                <a href="#how-it-works" class="btn secondary">
-                    How WILD Works
+                    Explore Plants →
                 </a>
 
             </div>
 
-        </div>
+        </section>
 
-
-        <div class="hero-card">
-
-            <div class="plant-image">
-                🌿
-            </div>
-
-            <div class="plant-info">
-
-                <p>WILD PICK</p>
-
-                <h3>Snake Plant</h3>
-
-                <span>Beginner friendly • Low sunlight</span>
-
-                <strong>₹299</strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PLANT FINDER -->
-    <section class="finder" id="plants">
-
-        <div class="section-heading">
-
-            <p class="small-title">PLANT FINDER</p>
-
-            <h2>What are you looking for?</h2>
-
-            <p>
-                Tell WILD a little about your space and we'll help
-                you discover suitable plants.
-            </p>
-
-        </div>
-
-
-        <div class="finder-grid">
-
-            <div class="finder-option">
-                <span>☀️</span>
-                <h3>Sunlight</h3>
-                <p>Low, medium or bright</p>
-            </div>
-
-            <div class="finder-option">
-                <span>🏠</span>
-                <h3>Space</h3>
-                <p>Room, balcony or garden</p>
-            </div>
-
-            <div class="finder-option">
-                <span>💰</span>
-                <h3>Budget</h3>
-                <p>Find plants within your range</p>
-            </div>
-
-            <div class="finder-option">
-                <span>🌱</span>
-                <h3>Experience</h3>
-                <p>Beginner or experienced</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURED PLANTS -->
-    <section class="featured">
-
-        <div class="section-heading">
-
-            <p class="small-title">DISCOVER</p>
-
-            <h2>Popular plants</h2>
-
-            <p>
-                Easy-to-grow plants to start your collection.
-            </p>
-
-        </div>
-
-
-        <div class="plant-grid">
-
-            <div class="plant-card">
-
-                <div class="plant-placeholder">
-                    🌿
-                </div>
-
-                <div class="plant-card-content">
-
-                    <span>LOW MAINTENANCE</span>
-
-                    <h3>Snake Plant</h3>
-
-                    <p>
-                        Perfect for beginners and low-light rooms.
-                    </p>
-
-                    <div class="plant-bottom">
-
-                        <strong>₹299</strong>
-
-                        <button>View</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="plant-card">
-
-                <div class="plant-placeholder">
-                    🪴
-                </div>
-
-                <div class="plant-card-content">
-
-                    <span>INDOOR</span>
-
-                    <h3>Money Plant</h3>
-
-                    <p>
-                        A simple indoor plant for your home.
-                    </p>
-
-                    <div class="plant-bottom">
-
-                        <strong>₹249</strong>
-
-                        <button>View</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="plant-card">
-
-                <div class="plant-placeholder">
-                    🌵
-                </div>
-
-                <div class="plant-card-content">
-
-                    <span>BEGINNER</span>
-
-                    <h3>Cactus</h3>
-
-                    <p>
-                        Needs little water and plenty of sunlight.
-                    </p>
-
-                    <div class="plant-bottom">
-
-                        <strong>₹149</strong>
-
-                        <button>View</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- NURSERIES -->
-    <section class="nurseries" id="nurseries">
-
-        <div class="nursery-content">
-
-            <p class="small-title">LOCAL NURSERIES</p>
-
-            <h2>
-                Discover plants
-                <span>near you.</span>
-            </h2>
-
-            <p>
-                WILD will connect plant lovers with nearby nurseries,
-                making it easier to discover plants, compare prices
-                and find what's actually available.
-            </p>
-
-            <button class="btn primary">
-                Explore Nurseries
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-    <section class="how" id="how-it-works">
-
-        <div class="section-heading">
-
-            <p class="small-title">HOW IT WORKS</p>
-
-            <h2>Plant shopping, simplified.</h2>
-
-        </div>
-
-
-        <div class="steps">
-
-            <div class="step">
-
-                <div>01</div>
-
-                <h3>Tell us about your space</h3>
-
-                <p>
-                    Choose your sunlight, space and budget.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div>02</div>
-
-                <h3>Discover suitable plants</h3>
-
-                <p>
-                    WILD helps you find plants that match.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div>03</div>
-
-                <h3>Find a nursery</h3>
-
-                <p>
-                    Discover local sellers and available plants.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
+    </main>
 
 
     <!-- FOOTER -->
     <footer>
 
-        <div class="logo">
-            🌿 WILD
+        <div class="footer-top">
+
+            <div>
+
+                <a href="#" class="logo">🌿 WILD</a>
+
+                <p>
+                    Making plant discovery
+                    simpler and smarter.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <div>
+                    <strong>Explore</strong>
+                    <a href="#plants">Plants</a>
+                    <a href="#finder">Plant Finder</a>
+                    <a href="#nurseries">Nurseries</a>
+                </div>
+
+                <div>
+                    <strong>WILD</strong>
+                    <a href="#how">How It Works</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+
+            </div>
+
         </div>
 
-        <p>
-            Making it easier to bring nature into your space.
-        </p>
-
-        <small>
-            © 2026 WILD
-        </small>
+        <div class="footer-bottom">
+            © 2026 WILD. Built with 🌱
+        </div>
 
     </footer>
 
