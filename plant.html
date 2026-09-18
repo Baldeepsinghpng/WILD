@@ -1,1 +1,1180 @@
-plant
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plants — WILD</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f5f7f1;
+            color: #172019;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(245, 247, 241, 0.88);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(23, 32, 25, 0.08);
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 34px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.72;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            opacity: 1;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            border: 1px solid rgba(0,0,0,0.08);
+
+            cursor: pointer;
+
+            font-size: 18px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding: 95px 7% 70px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .hero-small {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            opacity: 0.55;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(55px, 7vw, 95px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 28px;
+        }
+
+        .hero h1 span {
+            opacity: 0.35;
+        }
+
+        .hero p {
+            max-width: 540px;
+
+            font-size: 17px;
+            line-height: 1.7;
+
+            opacity: 0.65;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .primary-btn {
+            padding: 15px 23px;
+
+            border-radius: 100px;
+
+            background: #172019;
+            color: white;
+
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            padding: 15px 23px;
+
+            border-radius: 100px;
+
+            background: white;
+
+            border: 1px solid rgba(0,0,0,0.1);
+
+            font-weight: 600;
+        }
+
+        /* ================= HERO IMAGE ================= */
+
+        .hero-image {
+            height: 560px;
+
+            border-radius: 35px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background: #dce4d8;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.8s;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .image-label {
+            position: absolute;
+
+            bottom: 22px;
+            left: 22px;
+
+            padding: 12px 18px;
+
+            background: rgba(255,255,255,0.88);
+
+            backdrop-filter: blur(10px);
+
+            border-radius: 100px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        /* ================= CATEGORY BAR ================= */
+
+        .categories {
+            padding: 15px 7% 80px;
+
+            display: flex;
+
+            gap: 12px;
+
+            overflow-x: auto;
+        }
+
+        .category {
+            white-space: nowrap;
+
+            padding: 13px 20px;
+
+            border-radius: 100px;
+
+            background: white;
+
+            border: 1px solid rgba(0,0,0,0.08);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: #172019;
+            color: white;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 70px 7% 100px;
+        }
+
+        .section-head {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: end;
+
+            margin-bottom: 38px;
+        }
+
+        .section-head h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 48px;
+
+            letter-spacing: -2px;
+        }
+
+        .section-head p {
+            max-width: 430px;
+
+            line-height: 1.6;
+
+            opacity: 0.6;
+        }
+
+        /* ================= PLANT GRID ================= */
+
+        .plant-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+        .plant-card {
+            background: white;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(0,0,0,0.06);
+
+            transition: 0.3s;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow: 0 20px 50px rgba(23,32,25,0.10);
+        }
+
+        .plant-image {
+            height: 300px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #e5ebe1;
+        }
+
+        .plant-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .plant-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .heart {
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: rgba(255,255,255,0.9);
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .plant-info {
+            padding: 21px;
+        }
+
+        .plant-info small {
+            opacity: 0.5;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+        }
+
+        .plant-info h3 {
+            margin: 7px 0;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 25px;
+        }
+
+        .plant-info p {
+            font-size: 13px;
+
+            opacity: 0.55;
+
+            margin-bottom: 16px;
+        }
+
+        .plant-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .price {
+            font-size: 18px;
+
+            font-weight: 700;
+        }
+
+        .view-btn {
+            padding: 9px 14px;
+
+            border-radius: 100px;
+
+            background: #eef2eb;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        /* ================= FEATURE STRIP ================= */
+
+        .feature-strip {
+            margin: 20px 7% 100px;
+
+            padding: 35px;
+
+            border-radius: 28px;
+
+            background: #172019;
+
+            color: white;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+        }
+
+        .feature h3 {
+            margin-bottom: 8px;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 23px;
+        }
+
+        .feature p {
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            opacity: 0.65;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 70px 7% 35px;
+
+            background: #111712;
+
+            color: white;
+        }
+
+        .footer-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 70px;
+        }
+
+        .footer-logo {
+            font-family: "Playfair Display", serif;
+
+            font-size: 42px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 70px;
+        }
+
+        .footer-column {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .footer-column strong {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            opacity: 0.55;
+
+            font-size: 13px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            padding-top: 25px;
+
+            font-size: 12px;
+
+            opacity: 0.45;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .plant-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                height: 450px;
+            }
+
+            .feature-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero,
+            .section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .plant-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-head h2 {
+                margin-bottom: 15px;
+            }
+
+            .footer-top {
+                display: block;
+            }
+
+            .footer-links {
+                margin-top: 40px;
+
+                gap: 30px;
+
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">WILD.</a>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="plant.html" class="active">Plants</a>
+
+        <a href="#">Plant Finder</a>
+
+        <a href="#">Nurseries</a>
+
+        <a href="#">Care</a>
+
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="nav-btn">♡</button>
+
+        <button class="nav-btn">🛒</button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div>
+
+        <div class="hero-small">
+            WILD / PLANTS
+        </div>
+
+        <h1>
+            Bring<br>
+            <span>nature</span><br>
+            home.
+        </h1>
+
+        <p>
+            Explore plants selected for every kind of space,
+            lifestyle and level of experience. Find something
+            that fits your world.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#plants" class="primary-btn">
+                Explore plants
+            </a>
+
+            <a href="#" class="secondary-btn">
+                Find my plant
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <img src="images/snake-plant.jpg" alt="Snake Plant">
+
+        <div class="image-label">
+            Easy care · Indoor
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<div class="categories">
+
+    <div class="category active">All Plants</div>
+
+    <div class="category">Indoor</div>
+
+    <div class="category">Outdoor</div>
+
+    <div class="category">Flowering</div>
+
+    <div class="category">Succulents</div>
+
+    <div class="category">Low Maintenance</div>
+
+    <div class="category">Air Purifying</div>
+
+    <div class="category">Beginner Friendly</div>
+
+</div>
+
+
+<!-- ================= PLANTS ================= -->
+
+<section class="section" id="plants">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="hero-small">
+                EXPLORE THE COLLECTION
+            </div>
+
+            <h2>Find your plant.</h2>
+
+        </div>
+
+        <p>
+            From quiet desk companions to plants that
+            transform an entire room, discover something
+            that belongs in your space.
+        </p>
+
+    </div>
+
+
+    <div class="plant-grid">
+
+
+        <!-- Snake -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/snake-plant.jpg"
+                     alt="Snake Plant">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Indoor · Easy</small>
+
+                <h3>Snake Plant</h3>
+
+                <p>Minimal care. Maximum character.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹299</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Money Plant -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/money-plant.jpg"
+                     alt="Money Plant">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Indoor · Beginner</small>
+
+                <h3>Money Plant</h3>
+
+                <p>A classic green companion for any room.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹199</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Cactus -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/cactus.jpg"
+                     alt="Cactus">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Succulent · Easy</small>
+
+                <h3>Cactus</h3>
+
+                <p>Small, sculptural and seriously low maintenance.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹249</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Peace Lily -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/peace-lily.jpg"
+                     alt="Peace Lily">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Indoor · Flowering</small>
+
+                <h3>Peace Lily</h3>
+
+                <p>Elegant leaves with beautiful white blooms.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹399</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Aloe -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/aloe-vera.jpg"
+                     alt="Aloe Vera">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Succulent · Outdoor</small>
+
+                <h3>Aloe Vera</h3>
+
+                <p>A hardy plant that loves bright spaces.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹279</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Spider -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/spider-plant.jpg"
+                     alt="Spider Plant">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Indoor · Beginner</small>
+
+                <h3>Spider Plant</h3>
+
+                <p>Fast growing and perfect for beginners.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹249</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ZZ -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/zz-plant.jpg"
+                     alt="ZZ Plant">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Indoor · Low light</small>
+
+                <h3>ZZ Plant</h3>
+
+                <p>Built for spaces that don't get much sunlight.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹449</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Rubber -->
+
+        <article class="plant-card">
+
+            <div class="plant-image">
+
+                <img src="images/rubber-plant.jpg"
+                     alt="Rubber Plant">
+
+                <button class="heart">♡</button>
+
+            </div>
+
+            <div class="plant-info">
+
+                <small>Indoor · Statement</small>
+
+                <h3>Rubber Plant</h3>
+
+                <p>Bold foliage for a stronger interior.</p>
+
+                <div class="plant-bottom">
+
+                    <span class="price">₹499</span>
+
+                    <a href="#" class="view-btn">
+                        View plant →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="feature-strip">
+
+    <div class="feature">
+
+        <h3>🌱 Carefully selected</h3>
+
+        <p>
+            Plants chosen around real spaces,
+            lifestyles and growing conditions.
+        </p>
+
+    </div>
+
+    <div class="feature">
+
+        <h3>📍 Local nurseries</h3>
+
+        <p>
+            Discover plants from nurseries
+            around you instead of searching everywhere.
+        </p>
+
+    </div>
+
+    <div class="feature">
+
+        <h3>💚 Plant support</h3>
+
+        <p>
+            Not sure what your plant needs?
+            WILD helps you understand how to care for it.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-top">
+
+        <div class="footer-logo">
+            WILD.
+        </div>
+
+        <div class="footer-links">
+
+            <div class="footer-column">
+
+                <strong>Explore</strong>
+
+                <a href="index.html">Home</a>
+
+                <a href="plant.html">Plants</a>
+
+                <a href="#">Nurseries</a>
+
+                <a href="#">Plant Finder</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>Support</strong>
+
+                <a href="#">Plant Care</a>
+
+                <a href="#">Delivery</a>
+
+                <a href="#">Contact</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <strong>WILD</strong>
+
+                <a href="#">About us</a>
+
+                <a href="#">Our idea</a>
+
+                <a href="#">Become a nursery</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 WILD. Growing something better.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    // Heart buttons
+
+    const hearts = document.querySelectorAll(".heart");
+
+    hearts.forEach(heart => {
+
+        heart.addEventListener("click", () => {
+
+            if (heart.textContent === "♡") {
+
+                heart.textContent = "♥";
+
+            } else {
+
+                heart.textContent = "♡";
+
+            }
+
+        });
+
+    });
+
+
+    // Category interaction
+
+    const categories =
+        document.querySelectorAll(".category");
+
+    categories.forEach(category => {
+
+        category.addEventListener("click", () => {
+
+            categories.forEach(item =>
+                item.classList.remove("active")
+            );
+
+            category.classList.add("active");
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
