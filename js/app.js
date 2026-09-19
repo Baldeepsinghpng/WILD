@@ -1,169 +1,225 @@
-/* =========================================================
-   WILD 2.0 — GOD MODE INTERACTION ENGINE
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ---------- SMOOTH SCROLL ---------- */
+    /* ==============================
+       WILD 2.0 — APP ENGINE
+       ============================== */
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", function (e) {
+    const plants = [
+        {
+            name: "Snake Plant",
+            keywords: "snake sansevieria indoor low light easy",
+            type: "Indoor",
+            light: "Low",
+            difficulty: "Easy",
+            price: 299
+        },
+        {
+            name: "Aloe Vera",
+            keywords: "aloe vera indoor outdoor sunlight easy",
+            type: "Indoor",
+            light: "Bright",
+            difficulty: "Easy",
+            price: 199
+        },
+        {
+            name: "Peace Lily",
+            keywords: "peace lily indoor low light flowering",
+            type: "Indoor",
+            light: "Low",
+            difficulty: "Medium",
+            price: 349
+        },
+        {
+            name: "ZZ Plant",
+            keywords: "zz zamioculcas indoor low light easy",
+            type: "Indoor",
+            light: "Low",
+            difficulty: "Easy",
+            price: 399
+        },
+        {
+            name: "Money Plant",
+            keywords: "money plant pothos indoor easy",
+            type: "Indoor",
+            light: "Medium",
+            difficulty: "Easy",
+            price: 149
+        },
+        {
+            name: "Spider Plant",
+            keywords: "spider plant indoor easy beginner",
+            type: "Indoor",
+            light: "Medium",
+            difficulty: "Easy",
+            price: 249
+        },
+        {
+            name: "Areca Palm",
+            keywords: "areca palm indoor bright tropical",
+            type: "Indoor",
+            light: "Bright",
+            difficulty: "Medium",
+            price: 499
+        },
+        {
+            name: "Jade Plant",
+            keywords: "jade succulent outdoor sunlight easy",
+            type: "Outdoor",
+            light: "Bright",
+            difficulty: "Easy",
+            price: 299
+        }
+    ];
 
-            const target = document.querySelector(this.getAttribute("href"));
 
-            if (target) {
-                e.preventDefault();
+    /* ==============================
+       SEARCH
+       ============================== */
 
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
-        });
-    });
-
-
-    /* ---------- SEARCH ENGINE ---------- */
-
-    const searchInput =
-        document.querySelector('input[type="search"]') ||
-        document.querySelector('input[placeholder*="Search"]');
+    const search =
+        document.querySelector(
+            'input[type="search"], input[placeholder*="Search"], input[placeholder*="search"]'
+        );
 
     const cards =
         document.querySelectorAll(
-            ".plant-card, .plant-card-container, .plant-item, article"
+            ".plant-card"
         );
 
-    if (searchInput && cards.length) {
+    if (search && cards.length) {
 
-        searchInput.addEventListener("input", () => {
+        search.addEventListener("input", () => {
 
-            const query = searchInput.value
-                .toLowerCase()
-                .trim();
+            const query =
+                search.value
+                    .toLowerCase()
+                    .trim();
 
-            let visible = 0;
+            let found = 0;
 
             cards.forEach(card => {
 
                 const text =
                     card.innerText.toLowerCase();
 
-                if (!query || text.includes(query)) {
+                const match =
+                    text.includes(query);
 
-                    card.style.display = "";
-                    visible++;
+                card.style.display =
+                    match ? "" : "none";
 
-                    card.animate(
-                        [
-                            { opacity: 0.3, transform: "scale(.97)" },
-                            { opacity: 1, transform: "scale(1)" }
-                        ],
-                        {
-                            duration: 220,
-                            easing: "ease-out"
-                        }
-                    );
-
-                } else {
-
-                    card.style.display = "none";
-                }
+                if (match) found++;
             });
 
-            showSearchMessage(query, visible);
+            showSearchResult(query, found);
         });
     }
 
 
-    /* ---------- FAVORITES SYSTEM ---------- */
+    /* ==============================
+       FAVORITES
+       ============================== */
 
-    const savedPlants =
-        JSON.parse(localStorage.getItem("wildFavorites")) || [];
+    let favorites =
+        JSON.parse(
+            localStorage.getItem("wildFavorites")
+        ) || [];
 
-    document.querySelectorAll(".heart").forEach(button => {
 
-        const card = button.closest(
-            ".plant-card, article, .plant-item"
-        );
+    document
+        .querySelectorAll(".heart")
+        .forEach(button => {
 
-        if (!card) return;
+            const card =
+                button.closest(".plant-card");
 
-        const plantName =
-            card.querySelector("h3, h2, h4")?.innerText?.trim();
+            if (!card) return;
 
-        if (!plantName) return;
+            const title =
+                card.querySelector("h3");
 
-        if (savedPlants.includes(plantName)) {
-            button.classList.add("saved");
-            button.innerHTML = "♥";
-        }
+            if (!title) return;
 
-        button.addEventListener("click", e => {
+            const name =
+                title.innerText.trim();
 
-            e.preventDefault();
-            e.stopPropagation();
 
-            const index =
-                savedPlants.indexOf(plantName);
-
-            if (index === -1) {
-
-                savedPlants.push(plantName);
-
-                button.classList.add("saved");
+            if (favorites.includes(name)) {
                 button.innerHTML = "♥";
-
-                notify(`🌿 ${plantName} saved`);
-
-            } else {
-
-                savedPlants.splice(index, 1);
-
-                button.classList.remove("saved");
-                button.innerHTML = "♡";
-
-                notify(`${plantName} removed`);
+                button.classList.add("saved");
             }
 
-            localStorage.setItem(
-                "wildFavorites",
-                JSON.stringify(savedPlants)
+
+            button.addEventListener("click", event => {
+
+                event.preventDefault();
+
+                if (favorites.includes(name)) {
+
+                    favorites =
+                        favorites.filter(
+                            item => item !== name
+                        );
+
+                    button.innerHTML = "♡";
+                    button.classList.remove("saved");
+
+                    notify(
+                        `${name} removed from favorites`
+                    );
+
+                } else {
+
+                    favorites.push(name);
+
+                    button.innerHTML = "♥";
+                    button.classList.add("saved");
+
+                    notify(
+                        `${name} added to favorites ❤️`
+                    );
+                }
+
+
+                localStorage.setItem(
+                    "wildFavorites",
+                    JSON.stringify(favorites)
+                );
+            });
+        });
+
+
+    /* ==============================
+       CARD ANIMATION
+       ============================== */
+
+    document
+        .querySelectorAll(".plant-card")
+        .forEach(card => {
+
+            card.addEventListener(
+                "mouseenter",
+                () => {
+
+                    card.style.transform =
+                        "translateY(-8px)";
+                }
+            );
+
+            card.addEventListener(
+                "mouseleave",
+                () => {
+
+                    card.style.transform =
+                        "translateY(0)";
+                }
             );
         });
-    });
 
 
-    /* ---------- CARD HOVER EFFECT ---------- */
-
-    document.querySelectorAll(
-        ".plant-card, article"
-    ).forEach(card => {
-
-        card.addEventListener("mouseenter", () => {
-
-            card.style.transition =
-                "transform .25s ease, box-shadow .25s ease";
-
-            card.style.transform =
-                "translateY(-7px)";
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-            card.style.transform =
-                "translateY(0)";
-        });
-    });
-
-
-    /* ---------- SCROLL REVEAL ---------- */
-
-    const revealElements =
-        document.querySelectorAll(
-            "section, .plant-card, article"
-        );
+    /* ==============================
+       SCROLL REVEAL
+       ============================== */
 
     const observer =
         new IntersectionObserver(
@@ -171,130 +227,147 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 entries.forEach(entry => {
 
-                    if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
                         entry.target.classList.add(
                             "wild-visible"
                         );
 
-                        observer.unobserve(entry.target);
+                        observer.unobserve(
+                            entry.target
+                        );
                     }
                 });
 
             },
             {
-                threshold: 0.08
+                threshold: 0.12
             }
         );
 
-    revealElements.forEach(el =>
-        observer.observe(el)
-    );
 
+    document
+        .querySelectorAll(
+            "section, .plant-card, .category-card, .nursery-card"
+        )
+        .forEach(element => {
 
-    /* ---------- ACTIVE NAVIGATION ---------- */
-
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navLinks =
-        document.querySelectorAll(
-            'nav a[href^="#"]'
-        );
-
-    window.addEventListener("scroll", () => {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const top =
-                section.getBoundingClientRect().top;
-
-            if (top <= 150) {
-                current = section.id;
-            }
+            observer.observe(element);
         });
 
-        navLinks.forEach(link => {
 
-            link.classList.remove("active");
-
-            if (
-                current &&
-                link.getAttribute("href") === "#" + current
-            ) {
-                link.classList.add("active");
-            }
-        });
-    });
-
-
-    /* ---------- BACK TO TOP ---------- */
+    /* ==============================
+       BACK TO TOP
+       ============================== */
 
     const topButton =
         document.createElement("button");
 
+    topButton.className =
+        "wild-top";
+
     topButton.innerHTML = "↑";
 
-    topButton.className = "wild-top";
+    topButton.title =
+        "Back to top";
 
-    document.body.appendChild(topButton);
-
-    window.addEventListener("scroll", () => {
-
-        topButton.classList.toggle(
-            "show",
-            window.scrollY > 600
-        );
-    });
-
-    topButton.addEventListener("click", () => {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
+    document.body.appendChild(
+        topButton
+    );
 
 
-    /* ---------- WELCOME ---------- */
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (window.scrollY > 500) {
+
+                topButton.classList.add(
+                    "show"
+                );
+
+            } else {
+
+                topButton.classList.remove(
+                    "show"
+                );
+            }
+        }
+    );
+
+
+    topButton.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    );
+
+
+    /* ==============================
+       WELCOME MESSAGE
+       ============================== */
 
     setTimeout(() => {
 
-        notify("🌱 Welcome to WILD 2.0");
+        notify(
+            "🌱 Welcome to WILD"
+        );
 
-    }, 700);
+    }, 1000);
 
 });
 
 
-/* =========================================================
-   SEARCH MESSAGE
-   ========================================================= */
+/* =================================
+   SEARCH RESULT MESSAGE
+   ================================= */
 
-function showSearchMessage(query, count) {
+function showSearchResult(
+    query,
+    count
+) {
 
     let message =
-        document.querySelector(".wild-search-message");
+        document.querySelector(
+            ".wild-search-result"
+        );
+
 
     if (!message) {
 
         message =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         message.className =
-            "wild-search-message";
+            "wild-search-result";
+
 
         const search =
             document.querySelector(
-                'input[type="search"], input[placeholder*="Search"]'
+                'input[type="search"], input[placeholder*="Search"], input[placeholder*="search"]'
             );
 
-        if (search) {
-            search.parentElement.appendChild(message);
+
+        if (
+            search &&
+            search.parentElement
+        ) {
+
+            search.parentElement.appendChild(
+                message
+            );
         }
     }
+
 
     if (!query) {
 
@@ -302,42 +375,68 @@ function showSearchMessage(query, count) {
         return;
     }
 
+
     message.innerHTML =
-        count
+        count > 0
+
             ? `🌿 ${count} plant${count === 1 ? "" : "s"} found`
+
             : `🌱 No plants found for "${query}"`;
 }
 
 
-/* =========================================================
-   TOAST NOTIFICATIONS
-   ========================================================= */
+/* =================================
+   NOTIFICATION
+   ================================= */
 
-function notify(message) {
+function notify(text) {
 
     const old =
-        document.querySelector(".wild-toast");
+        document.querySelector(
+            ".wild-notification"
+        );
 
     if (old) old.remove();
 
-    const toast =
-        document.createElement("div");
 
-    toast.className = "wild-toast";
+    const notification =
+        document.createElement(
+            "div"
+        );
 
-    toast.innerText = message;
 
-    document.body.appendChild(toast);
+    notification.className =
+        "wild-notification";
 
-    requestAnimationFrame(() => {
-        toast.classList.add("show");
-    });
+
+    notification.textContent =
+        text;
+
+
+    document.body.appendChild(
+        notification
+    );
+
 
     setTimeout(() => {
 
-        toast.classList.remove("show");
+        notification.classList.add(
+            "show"
+        );
 
-        setTimeout(() => toast.remove(), 300);
+    }, 20);
 
-    }, 2200);
+
+    setTimeout(() => {
+
+        notification.classList.remove(
+            "show"
+        );
+
+        setTimeout(
+            () => notification.remove(),
+            300
+        );
+
+    }, 2500);
 }
